@@ -1,5 +1,8 @@
 name: Run Python Script and Commit Changes
 
+permissions:
+  contents: write
+  
 on:
   schedule:
     # Runs every 1 hours
