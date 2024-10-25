@@ -44,4 +44,4 @@ jobs:
         git commit -m "refreshing contributor list ${DATE}" || echo "No changes to commit"
 
         # Push the changes to the contributor branch
-        git push origin contributor
+        git push origin main
