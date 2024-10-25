@@ -38,6 +38,8 @@ if repos_response.status_code == 200:
             if repo_contributors:
                 for repo_contributor in repo_contributors:
                     username = repo_contributor["login"]
+                    if username == "actions-user":
+                        continue
                     if repo_contributor["type"] != "User":
                         continue
                     if username not in contributor_contribution_dict:
