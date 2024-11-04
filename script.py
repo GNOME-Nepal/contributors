@@ -24,7 +24,7 @@ contributor_contribution_dict = {}                          # Initilizes an empt
 
 
 if repos_response.status_code == 200:
-    repos = repos_response.json()            # If Connection is ok, it Converts the JSON response (a list of repositotries ) into a python list and stores in repos
+    repos = repos_response.json()           
 
     for repo in repos:              
         repo_name = repo["name"]            # Extracts the repository's name from each repositry object
@@ -36,7 +36,7 @@ if repos_response.status_code == 200:
         if contributors_response.status_code == 200:
             repo_contributors = contributors_response.json()
 
-            if repo_contributors:                           # If there are contributors for the repository (repo_contributors is not empty), iterates over each repo_contributor
+            if repo_contributors:                         
                 for repo_contributor in repo_contributors:  
                     username = repo_contributor["login"]    # Extracts the Githun username of each contributors
                     if username == "actions-user":
@@ -54,18 +54,18 @@ if repos_response.status_code == 200:
 # now we will get all the user's information
 full_information = []
 
-for username in contributor_contribution_dict.keys():      # Loops Through each username 
+for username in contributor_contribution_dict.keys():       # Loops Through each username 
     user_information_url = f"{BASE_URL}/users/{username}"   # # Construct API Endpoint URL to get user profile information
 
     response = requests.get(
         user_information_url,
         headers=headers,
-    )                                               # Get profile information for the current username
+    )                                               
     score = contributor_contribution_dict[username] # retrives the total number of contributions the user has made across all repositories
     if response.status_code == 200:
-        user = response.json()                      # If the request was successful, retrieves the user's profile as a JSON object (user)
+        user = response.json()                     
         user["contributions"] = score               # Adds the user's total contributions to their profile information
-        full_information.append(user)               # Appends the updated user information to full_information.
+        full_information.append(user)              
 
 # sort by highest contributors first
 full_information = sorted(
