@@ -852,15 +852,15 @@
     "blog": "https://sudanchapagain.com.np",
     "location": "kathmandu, nepal",
     "email": null,
-    "hireable": null,
+    "hireable": true,
     "bio": "personal projects @ codeberg now",
     "twitter_username": null,
-    "public_repos": 38,
+    "public_repos": 50,
     "public_gists": 7,
     "followers": 29,
     "following": 25,
     "created_at": "2022-03-05T17:36:26Z",
-    "updated_at": "2026-08-03T17:03:42Z",
+    "updated_at": "2026-08-10T11:31:26Z",
     "contributions": 1
   },
   {
