@@ -138,7 +138,7 @@
     "public_repos": 58,
     "public_gists": 0,
     "followers": 36,
-    "following": 18,
+    "following": 19,
     "created_at": "2022-02-02T17:21:31Z",
     "updated_at": "2026-10-14T06:45:42Z",
     "contributions": 32
@@ -284,7 +284,7 @@
     "followers": 23,
     "following": 32,
     "created_at": "2021-03-20T05:59:50Z",
-    "updated_at": "2026-09-23T04:22:59Z",
+    "updated_at": "2026-10-22T07:58:01Z",
     "contributions": 5
   },
   {
@@ -1208,19 +1208,19 @@
     "user_view_type": "public",
     "site_admin": false,
     "name": "Diwakar",
-    "company": null,
+    "company": "@Stupa-Labs @Deployov ",
     "blog": "diwakar-phuyal.com.np",
     "location": "Hetauda",
     "email": null,
     "hireable": null,
-    "bio": "Curious about everything 🙂\r\nWorking on Dream projects 😉\r\n\r\n\r\n ",
+    "bio": null,
     "twitter_username": null,
     "public_repos": 66,
     "public_gists": 0,
     "followers": 47,
     "following": 39,
     "created_at": "2020-09-03T14:15:31Z",
-    "updated_at": "2026-10-05T00:34:47Z",
+    "updated_at": "2026-10-22T07:36:44Z",
     "contributions": 1
   }
 ]
