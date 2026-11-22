@@ -18,7 +18,7 @@ headers = {
 
 # Get repositories of the organization
 repos_url = f"{BASE_URL}/orgs/{ORG_NAME}/repos"             # Constructs the API Endpoint URL to get all repositories within the Specified Organization
-repos_response = requests.get(repos_url, headers=headers)   # Sends an HTTP GET request to fetch the repositories. And stored in repos_response
+repos_response = requests.get(repos_url, headers=headers, params={"per_page": 100})   # Sends an HTTP GET request to fetch the repositories. And stored in repos_response
 
 contributor_contribution_dict = {}                          # Initilizes an empty dictionary to store usernames as keys and their contribution count as values 
 
@@ -31,7 +31,7 @@ if repos_response.status_code == 200:
 
         # Get contributors for the current repository
         contributors_url = f"{BASE_URL}/repos/{ORG_NAME}/{repo_name}/contributors"         # Constructs the API Endpoint Url for the list of contributor for each repository
-        contributors_response = requests.get(contributors_url, headers=headers)            # Sends and HTTP Get request to fetch the contributors for the current repository 
+        contributors_response = requests.get(contributors_url, headers=headers, params={"per_page": 100})            # Sends and HTTP Get request to fetch the contributors for the current repository 
 
         if contributors_response.status_code == 200:
             repo_contributors = contributors_response.json()
