@@ -33,6 +33,7 @@ jobs:
 
 
     - name: Commit changes
+      id: commit
       run: |
         git config --local user.name "GitHub Actions"
         git config --local user.email "actions@github.com"
@@ -43,8 +44,21 @@ jobs:
         # Stage all changes
         git add .
 
-        # Commit the changes
-        git commit -m "refreshing contributor list ${DATE}" || echo "No changes to commit"
+        # Commit and push only if contributors.json actually changed
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+        else
+          git commit -m "refreshing contributor list ${DATE}"
+          git push origin main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        fi
 
-        # Push the changes to the contributor branch
-        git push origin main
+    # Pushes made with GITHUB_TOKEN do not trigger other workflows, so the
+    # Discord update has to run here rather than in a separate on-push workflow.
+    - name: Update Discord top contributors message
+      if: steps.commit.outputs.changed == 'true'
+      run: python update_discord_webhook.py
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        DISCORD_MESSAGE_ID: ${{ secrets.DISCORD_MESSAGE_ID }}
