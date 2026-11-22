@@ -56,8 +56,9 @@ jobs:
 
     # Pushes made with GITHUB_TOKEN do not trigger other workflows, so the
     # Discord update has to run here rather than in a separate on-push workflow.
+    # Manual (workflow_dispatch) runs always update Discord, so it can be tested on demand.
     - name: Update Discord top contributors message
-      if: steps.commit.outputs.changed == 'true'
+      if: steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
       run: python update_discord_webhook.py
       env:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
